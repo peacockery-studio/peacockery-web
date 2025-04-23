@@ -25,38 +25,11 @@ Core features:
 
 ## Quick Start
 
-To spin up this example locally, follow these steps:
-
-### Clone
-
-If you have not done so already, you need to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
-
-#### Method 1 (recommended)
-
-Go to Payload Cloud and [clone this template](https://payloadcms.com/new/clone/website). This will create a new repository on your GitHub account with this template's code which you can then clone to your own machine.
-
-#### Method 2
-
-Use the `create-payload-app` CLI to clone this template directly to your machine:
-
-```bash
-pnpx create-payload-app my-project -t website
-```
-
-#### Method 3
-
-Use the `git` CLI to clone this template directly to your machine:
-
-```bash
-git clone -n --depth=1 --filter=tree:0 https://github.com/payloadcms/payload my-project && cd my-project && git sparse-checkout set --no-cone templates/website && git checkout && rm -rf .git && git init && git add . && git mv -f templates/website/{.,}* . && git add . && git commit -m "Initial commit"
-```
-
 ### Development
 
-1. First [clone the repo](#clone) if you have not done so already
-1. `cd my-project && cp .env.example .env` to copy the example environment variables
-1. `pnpm install && pnpm dev` to install dependencies and start the dev server
-1. open `http://localhost:3000` to open the app in your browser
+1. `cp .env.example .env` to copy the example environment variables
+2. `bun install && bun dev` to install dependencies and start the dev server
+3. Open `http://localhost:3000` to access the app in your browser
 
 That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
 
@@ -192,8 +165,6 @@ Although Next.js includes a robust set of caching strategies out of the box, Pay
 
 ## Development
 
-To spin up this example locally, follow the [Quick Start](#quick-start). Then [Seed](#seed) the database with a few pages, posts, and projects.
-
 ### Working with Postgres
 
 Postgres and other SQL-based databases follow a strict schema for managing your data. In comparison to our MongoDB adapter, this means that there's a few extra steps to working with Postgres.
@@ -213,15 +184,15 @@ If your database is pointed to production you will want to set `push: false` oth
 Locally create a migration
 
 ```bash
-pnpm payload migrate:create
+bun payload migrate:create
 ```
 
 This creates the migration files you will need to push alongside with your new configuration.
 
-On the server after building and before running `pnpm start` you will want to run your migrations
+On the server after building and before running `bun start` you will want to run your migrations
 
 ```bash
-pnpm payload migrate
+bun payload migrate
 ```
 
 This command will check for any migrations that have not yet been run and try to run them and it will keep a record of migrations that have been run in the database.
@@ -230,11 +201,9 @@ This command will check for any migrations that have not yet been run and try to
 
 Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
-
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
+1. First, copy the example environment variables by running `cp .env.example .env`. The docker-compose file will automatically use the `.env` file in your project root
+2. Next run `docker-compose up`
+3. Open `http://localhost:3000` to access the app in your browser and login to create your first admin user
 
 ### Seed
 
@@ -252,9 +221,9 @@ The seed script will also create a demo user for demonstration purposes only:
 
 To run Payload in production, you need to build and start the Admin panel. To do so, follow these steps:
 
-1. Invoke the `next build` script by running `pnpm build` or `npm run build` in your project root. This creates a `.next` directory with a production-ready admin bundle.
-1. Finally run `pnpm start` or `npm run start` to run Node in production and serve Payload from the `.build` directory.
-1. When you're ready to go live, see Deployment below for more details.
+1. Invoke the `next build` script by running `bun build` in your project root. This creates a `.next` directory with a production-ready admin bundle.
+2. Finally run `bun start` to run Node in production and serve Payload from the `.build` directory.
+3. When you're ready to go live, see Deployment below for more details.
 
 ### Deploying to Payload Cloud
 
@@ -265,7 +234,7 @@ The easiest way to deploy your project is to use [Payload Cloud](https://payload
 This template can also be deployed to Vercel for free. You can get started by choosing the Vercel DB adapter during the setup of the template or by manually installing and configuring it:
 
 ```bash
-pnpm add @payloadcms/db-vercel-postgres
+bun add @payloadcms/db-vercel-postgres
 ```
 
 ```ts
@@ -285,7 +254,7 @@ export default buildConfig({
 We also support Vercel's blob storage:
 
 ```bash
-pnpm add @payloadcms/storage-vercel-blob
+bun add @payloadcms/storage-vercel-blob
 ```
 
 ```ts
