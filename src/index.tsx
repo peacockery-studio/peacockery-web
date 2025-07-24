@@ -1,33 +1,11 @@
 import { serve } from 'bun';
 import index from './index.html';
 
-const server = serve({
+const _server = serve({
   port: process.env.PORT || 3000,
   routes: {
-    // Serve index.html for all unmatched routes.
+    // Serve index.html for all routes
     '/*': index,
-
-    '/api/hello': {
-      GET(_req) {
-        return Response.json({
-          message: 'Hello, world!',
-          method: 'GET',
-        });
-      },
-      PUT(_req) {
-        return Response.json({
-          message: 'Hello, world!',
-          method: 'PUT',
-        });
-      },
-    },
-
-    '/api/hello/:name': (req) => {
-      const name = req.params.name;
-      return Response.json({
-        message: `Hello, ${name}!`,
-      });
-    },
   },
 
   development: process.env.NODE_ENV !== 'production' && {
@@ -39,11 +17,9 @@ const server = serve({
   },
 });
 
-console.log(`Server running at ${server.url}`);
-
 // Auto-open browser in development
 if (process.env.NODE_ENV !== 'production') {
-  import('child_process').then(({ exec }) => {
+  import('node:child_process').then(({ exec }) => {
     exec('open http://localhost:3000');
   });
 }
