@@ -4,7 +4,12 @@ import { useEffect, useState } from 'react';
 import { siGithub } from 'simple-icons';
 import { Button } from '@/components/ui/button';
 
-const projects = [
+const projects: Array<{
+  name: string;
+  description: string;
+  url: string;
+  marketplaceUrl?: string;
+}> = [
   {
     name: 'Python Boilerplate',
     description: 'A modern Python project template with best practices',
@@ -20,6 +25,7 @@ const projects = [
     description:
       'VSCode extension for French guillemets «» syntax highlighting',
     url: 'https://github.com/peacockery-studio/markdown-guillemets',
+    marketplaceUrl: 'https://marketplace.visualstudio.com/items?itemName=PeacockeryStudio.markdown-guillemets',
   },
 ];
 
@@ -79,18 +85,38 @@ export function App() {
 
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
           {projects.map((project) => (
-            <a
-              className="rounded-lg border border-black p-6 transition-colors hover:border-green-600 dark:border-current dark:hover:border-gray-400"
-              href={project.url}
+            <div
+              className="flex flex-col rounded-lg border border-black p-6 transition-colors hover:border-green-600 dark:border-current dark:hover:border-gray-400"
               key={project.name}
-              rel="noopener noreferrer"
-              target="_blank"
             >
               <h3 className="mb-2 font-semibold text-xl">{project.name}</h3>
-              <p className="text-gray-600 text-sm dark:text-gray-400">
+              <p className="flex-grow text-gray-600 text-sm dark:text-gray-400">
                 {project.description}
               </p>
-            </a>
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <a
+                  className="text-blue-600 hover:underline text-sm dark:text-blue-400"
+                  href={project.url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  GitHub
+                </a>
+                {project.marketplaceUrl && (
+                  <>
+                    <span className="text-gray-400">•</span>
+                    <a
+                      className="text-blue-600 hover:underline text-sm dark:text-blue-400"
+                      href={project.marketplaceUrl}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      VS Code Marketplace
+                    </a>
+                  </>
+                )}
+              </div>
+            </div>
           ))}
         </div>
 
