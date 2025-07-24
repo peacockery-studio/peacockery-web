@@ -25,7 +25,8 @@ const projects: Array<{
     description:
       'VSCode extension for French guillemets «» syntax highlighting',
     url: 'https://github.com/peacockery-studio/markdown-guillemets',
-    marketplaceUrl: 'https://marketplace.visualstudio.com/items?itemName=PeacockeryStudio.markdown-guillemets',
+    marketplaceUrl:
+      'https://marketplace.visualstudio.com/items?itemName=PeacockeryStudio.markdown-guillemets',
   },
 ];
 
@@ -95,7 +96,7 @@ export function App() {
               </p>
               <div className="mt-4 flex items-center justify-center gap-2">
                 <a
-                  className="text-blue-600 hover:underline text-sm dark:text-blue-400"
+                  className="text-blue-600 text-sm hover:underline dark:text-blue-400"
                   href={project.url}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -106,7 +107,7 @@ export function App() {
                   <>
                     <span className="text-gray-400">•</span>
                     <a
-                      className="text-blue-600 hover:underline text-sm dark:text-blue-400"
+                      className="text-blue-600 text-sm hover:underline dark:text-blue-400"
                       href={project.marketplaceUrl}
                       rel="noopener noreferrer"
                       target="_blank"
