@@ -1,1 +1,2 @@
-npx ultracite format
+bunx ultracite format
+bunx biome format --write .
