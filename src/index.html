@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
+    <title>Peacockery - Dev Studio | Survival of the Creativest</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Peacockery Dev Studio - Building modern templates and tools including Python Boilerplate, Expo NativeWind UI, and Markdown Guillemets extension." />
+    <meta name="keywords" content="dev studio, python boilerplate, expo template, react native, vscode extension, markdown guillemets" />
+    <meta name="author" content="Chi Kingsley" />
+    <link rel="canonical" href="https://peacockery.studio/" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Peacockery - Dev Studio" />
+    <meta property="og:description" content="Building modern templates and development tools. Survival of the creativest." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://peacockery.studio/" />
+    <meta property="og:image" content="https://peacockery.studio/og-image.png" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Peacockery - Dev Studio" />
+    <meta name="twitter:description" content="Building modern templates and development tools. Survival of the creativest." />
+    <meta name="twitter:image" content="https://peacockery.studio/og-image.png" />
+    <script>
+      // Prevent FOUC on page load
+      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(theme);
+    </script>
+    <script type="module" src="./frontend.tsx" async></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Peacockery",
+      "description": "Dev Studio - Building modern templates and development tools",
+      "url": "https://peacockery.studio/",
+      "logo": "https://peacockery.studio/logo.svg",
+      "sameAs": [
+        "https://github.com/peacockery-studio",
+        "https://github.com/chikingsley"
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
+  "extends": ["ultracite"],
+  "files": {
+    "includes": [
+      "**",
+      "!build.ts",
+      "!tailwind.config.mjs",
+      "!tsconfig.json",
+      "!package.json",
+      "!biome.jsonc",
+      "!bunfig.toml",
+      "!bun.lock"
+    ]
+  },
+  "linter": {
+    "rules": {
+      "nursery": {
+        "noUnknownAtRule": "off"
+      },
+      "correctness": {
+        "noUndeclaredVariables": "off"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "off"
+      }
+    }
+  }
+}
