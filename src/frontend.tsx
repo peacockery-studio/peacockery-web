@@ -5,13 +5,13 @@
  * It is included in `src/index.html`.
  */
 
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { App } from './app';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { App } from "./app";
 
-const elem = document.getElementById('root');
+const elem = document.getElementById("root");
 if (!elem) {
-  throw new Error('Root element not found');
+  throw new Error("Root element not found");
 }
 
 const app = (

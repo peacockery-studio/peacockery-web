@@ -1,8 +1,8 @@
-import './index.css';
-import { Moon, Sun } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { siGithub } from 'simple-icons';
-import { Button } from '@/components/ui/button';
+import "./index.css";
+import { Moon, Sun } from "lucide-react";
+import { useEffect, useState } from "react";
+import { siGithub } from "simple-icons";
+import { Button } from "@/components/ui/button";
 
 const projects: Array<{
   name: string;
@@ -11,54 +11,73 @@ const projects: Array<{
   marketplaceUrl?: string;
 }> = [
   {
-    name: 'Python Boilerplate',
-    description: 'A modern Python project template with best practices',
-    url: 'https://github.com/peacockery-studio/python-boilerplate',
-  },
-  {
-    name: 'Expo NativeWind UI Template',
-    description: 'React Native Expo template with NativeWind styling',
-    url: 'https://github.com/peacockery-studio/expo-nativewindui-template',
-  },
-  {
-    name: 'Markdown Guillemets',
+    name: "SharePoint MCP (Cert Auth)",
     description:
-      'VSCode extension for French guillemets «» syntax highlighting',
-    url: 'https://github.com/peacockery-studio/markdown-guillemets',
+      "MCP server for SharePoint with secure certificate-based authentication - no client secrets needed",
+    url: "https://github.com/peacockery-studio/mcp-sharepoint-cert",
+  },
+  {
+    name: "SharePoint MCP",
+    description:
+      "MCP server enabling Claude to manage SharePoint documents and folders via OAuth",
+    url: "https://github.com/peacockery-studio/sharepoint-mcp",
+  },
+  {
+    name: "Outlook MCP",
+    description:
+      "MCP server for Outlook - read/send emails, manage calendar events via Claude",
+    url: "https://github.com/peacockery-studio/outlook-mcp",
+  },
+  {
+    name: "Markdown Guillemets",
+    description:
+      "VSCode extension for French guillemets «» syntax highlighting",
+    url: "https://github.com/peacockery-studio/markdown-guillemets",
     marketplaceUrl:
-      'https://marketplace.visualstudio.com/items?itemName=PeacockeryStudio.markdown-guillemets',
+      "https://marketplace.visualstudio.com/items?itemName=PeacockeryStudio.markdown-guillemets",
+  },
+  {
+    name: "Expo NativeWind UI",
+    description:
+      "React Native Expo template with NativeWind styling and UI components",
+    url: "https://github.com/peacockery-studio/expo-nativewindui-template",
+  },
+  {
+    name: "Python Boilerplate",
+    description: "A modern Python project template with best practices",
+    url: "https://github.com/peacockery-studio/python-boilerplate",
   },
 ];
 
 export function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const root = window.document.documentElement;
-    const initialTheme = localStorage.getItem('theme') as
-      | 'light'
-      | 'dark'
+    const initialTheme = localStorage.getItem("theme") as
+      | "light"
+      | "dark"
       | null;
 
     if (initialTheme) {
       setTheme(initialTheme);
-      root.classList.remove('light', 'dark');
+      root.classList.remove("light", "dark");
       root.classList.add(initialTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-      root.classList.add('dark');
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
+      root.classList.add("dark");
     } else {
-      root.classList.add('light');
+      root.classList.add("light");
     }
   }, []);
 
   const toggleTheme = () => {
     const root = window.document.documentElement;
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newTheme = theme === "light" ? "dark" : "light";
 
-    root.classList.remove('light', 'dark');
+    root.classList.remove("light", "dark");
     root.classList.add(newTheme);
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem("theme", newTheme);
     setTheme(newTheme);
   };
 
@@ -71,7 +90,7 @@ export function App() {
         size="icon"
         variant="ghost"
       >
-        {theme === 'light' ? (
+        {theme === "light" ? (
           <Moon className="h-5 w-5" />
         ) : (
           <Sun className="h-5 w-5" />
@@ -103,7 +122,7 @@ export function App() {
                 >
                   GitHub
                 </a>
-                {project.marketplaceUrl && (
+                {project.marketplaceUrl !== undefined && (
                   <>
                     <span className="text-gray-400">•</span>
                     <a

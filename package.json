@@ -1,5 +1,5 @@
 {
-  "name": "bun-react-template",
+  "name": "peacockery-web",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -7,27 +7,38 @@
     "dev": "bun --hot src/index.tsx",
     "start": "NODE_ENV=production bun src/index.tsx",
     "build": "bun run build.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "bun tsc --noEmit && bunx ultracite check",
+    "check": "bunx ultracite check",
+    "fix": "bunx ultracite fix",
+    "format": "bunx ultracite format"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.2.3",
-    "bun-plugin-tailwind": "^0.0.15",
+    "@radix-ui/react-slot": "^1.2.4",
+    "bun-plugin-tailwind": "^0.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.525.0",
-    "react": "^19",
-    "react-dom": "^19",
-    "simple-icons": "^15.7.0",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.11",
+    "lucide-react": "^0.556.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "simple-icons": "^16.0.0",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.17",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.1.2",
+    "@biomejs/biome": "2.3.8",
     "@types/bun": "latest",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "husky": "^9.1.7",
-    "ultracite": "5.0.48"
+    "lefthook": "^2.0.9",
+    "lint-staged": "^16.2.7",
+    "ultracite": "6.3.9"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
+      "bun x ultracite fix"
+    ]
   }
 }
